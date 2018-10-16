@@ -1,0 +1,22 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+    <title> Dog API </title>
+    <link  rel="stylesheet" href="main.css" type="text/css"> 
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <h1>Generate up to 50 dog images</h1>
+    <form >
+        <fieldset>
+        <legend>Generate</legend>
+        Number of dogs generated<input type="number" id="numberEntry" value="3" max="50" min="1" required>
+        <button type="submit">Click to generate</button>
+        </fieldset>
+    </form>
+    <section class="results hidden" >
+        <img class="results-img" alt="">
+    </section>
+    <script src="app.js"></script>
+</body>
+</html>
