@@ -1,29 +1,35 @@
 function getDogImages() {
-    var number = document.getElementById("numberEntry").value
-    console.log(number);
-    var url = `https://dog.ceo/api/breeds/image/random/${number}`;
+    var dogBreed = document.getElementById("breedEntry").value;
+    console.log(dogBreed);
+    var url = `https://dog.ceo/api/breed/${dogBreed}/images/random`;
     fetch(url)
-    .then(response => response.json())
-    .then(responseJson => displayImages(responseJson))
-    .catch(error => alert('Something went wrong. Try again later.'));
+        .then(response => response.json())
+        .then(responseJson => 
+          displayResults(responseJson))
+        //.catch(error => alert('Something went wrong. Try again later.'));
 }
 
-function displayImages(responseJson) {
+function displayResults(responseJson) {
     console.log(responseJson);
-    for (let i = 0; i < responseJson.message.length; i++) {
-    $('.results').append(`<img src="${responseJson.message[i]}" class="results-img">`)
+    if (responseJson.status == "success") {
+        
+    $('.results').append(`<img src="${responseJson.message}" class="results-img">`)
     $('.results').removeClass('hidden');
+    } else if (responseJson.code == 404) {
+        alert("ERROR 404 Breed Not Found");
     }
+    
 }
 
-function deleteImages() {
+function deleteResults() {
     $("img").remove();
+    $("span").remove();
 }
 
 function watchForm() {
     $("form").submit(event => {
         event.preventDefault();
-        deleteImages();
+        deleteResults();
         getDogImages();
     });
 }
