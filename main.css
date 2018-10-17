@@ -1,0 +1,10 @@
+.hidden {
+    display: none;
+}
+
+img{
+    height: 250px;
+    float: left;
+    border: solid 1px rgb(0,0,0);
+    
+}
